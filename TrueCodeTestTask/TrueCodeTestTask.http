@@ -1,0 +1,6 @@
+@TrueCodeTestTask_HostAddress = http://localhost:5194
+
+GET {{TrueCodeTestTask_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

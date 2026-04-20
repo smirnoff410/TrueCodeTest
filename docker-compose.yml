@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  postgres-user:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: TrueCodeUserService
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+  postgres-currency:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: TrueCodeCurrencyService
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"

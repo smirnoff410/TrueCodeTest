@@ -1,0 +1,12 @@
+﻿.vs
+ApiGateway/bin
+ApiGateway/obj
+Common/bin
+Common/obj
+CurrencyService/bin
+Tests/bin
+CurrencyService/obj
+Tests/obj
+TrueCodeTestTask/obj
+UserService/bin
+UserService/obj
