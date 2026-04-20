@@ -76,6 +76,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<ICurrencyGrabber, CurrencyGrabber>();
 builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 
+builder.Services.Configure<CurrencyGrabberSettings>(builder.Configuration.GetSection("CurrencyGrabber"));
 builder.Services.Configure<CurrencyBackgroundSettings>(builder.Configuration.GetSection("CurrencyBackground"));
 var jwtSettingsSection = builder.Configuration.GetSection("JwtSettings");
 builder.Services.Configure<JwtSettings>(jwtSettingsSection);

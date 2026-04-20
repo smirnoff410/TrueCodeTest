@@ -5,27 +5,30 @@ namespace CurrencyService.Infrastracture.Services.Currency
 {
     using CurrencyService.Domain.Models;
     using Mapster;
+    using Microsoft.Extensions.Options;
     using System;
     using System.Text;
 
     public class CurrencyGrabber : ICurrencyGrabber
     {
         private readonly HttpClient _httpClient;
+        private readonly CurrencyGrabberSettings _settings;
         private readonly ILogger<CurrencyGrabber> _logger;
-        private const string BaseUrl = "http://www.cbr.ru/scripts/XML_daily.asp";
 
         public CurrencyGrabber(
             HttpClient httpClient,
+            IOptions<CurrencyGrabberSettings> options,
             ILogger<CurrencyGrabber> logger)
         {
             _httpClient = httpClient;
+            _settings = options.Value;
             _logger = logger;
         }
         public async Task<List<Currency>> Grab()
         {
             try
             {
-                var response = await _httpClient.GetAsync(BaseUrl);
+                var response = await _httpClient.GetAsync(_settings.BaseUrl);
                 response.EnsureSuccessStatusCode();
 
                 var bytes = await response.Content.ReadAsByteArrayAsync();
